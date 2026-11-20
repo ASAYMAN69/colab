@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+uploads/
+cloudflare_url.txt
+.DS_Store
+_src/
