@@ -70,7 +70,14 @@ def multipart_fields(ctype, body):
             if fm:
                 filename = fm.group(1)
         if name:
-            fields[(name, filename)] = content.rstrip(b"\r\n")
+            # The multipart framing adds exactly one trailing CRLF before the
+            # next boundary; strip that one, not any newlines that belong to
+            # the uploaded content itself.
+            if content.endswith(b"\r\n"):
+                content = content[:-2]
+            elif content.endswith(b"\n"):
+                content = content[:-1]
+            fields[(name, filename)] = content
     return fields
 
 
