@@ -19,13 +19,15 @@ Cloudflare HTTPS tunnel.
 
 ## What it does
 
-`colab_connect.ipynb` (when run, in order):
+`colab_connect.ipynb` is exactly **two cells**:
 
-1. Makes `server.py` available — clones `REPO_URL` if you run it outside this repo, otherwise uses the file next to the notebook.
-2. Starts a stdlib-only HTTP server (`server.py`) on `127.0.0.1:8787`.
-3. Installs `cloudflared` (single binary from GitHub releases) if it's not on `PATH` or at `~/.local/bin/cloudflared`.
-4. Opens a free Cloudflare quick tunnel and prints the public `https://….trycloudflare.com` URL.
-5. You copy that URL and paste it to the AI.
+- **Cell 1 — make it live** (config at the top):
+  1. Makes `server.py` available — clones `REPO_URL` if you run it outside this repo, otherwise uses the file next to the notebook.
+  2. Starts the stdlib-only HTTP server (`server.py`) on `127.0.0.1:8787`.
+  3. Installs `cloudflared` (single binary from GitHub releases) if it's not on `PATH` or at `~/.local/bin/cloudflared`.
+  4. Opens a free Cloudflare quick tunnel and prints the public `https://….trycloudflare.com` URL.
+  5. You copy that URL and paste it to the AI.
+- **Cell 2 — stop it**: terminates the server and the tunnel so the public URL closes.
 
 ## Server API
 
